@@ -1,13 +1,13 @@
 import { WebhookEvent } from "@clerk/nextjs/server";
-import { createClient } from "@tursodatabase/api";
+// import { createClient } from "@tursodatabase/api";
 import md5 from "md5";
 import { headers } from "next/headers";
 import { Webhook } from "svix";
 
-const turso = createClient({
-  token: process.env.TURSO_USER_API_TOKEN!,
-  org: process.env.TURSO_ORG_NAME!,
-});
+// const turso = createClient({
+//   token: process.env.TURSO_USER_API_TOKEN!,
+//   org: process.env.TURSO_ORG_NAME!,
+// });
 
 export async function POST(req: Request) {
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
