@@ -38,10 +38,11 @@ export async function POST(req: Request) {
     const databaseName = md5(evt.data.id);
 
     try {
-      console.log("CREATE USER", databaseName);
+      console.log("CREATE FARM", databaseName);
 
       await turso.databases.create(databaseName, {
         schema: process.env.TURSO_SCHEMA_DATABASE_NAME!,
+        group: process.env.TURSO_GROUP_NAME!,
       });
     } catch (err) {
       console.error(err);
