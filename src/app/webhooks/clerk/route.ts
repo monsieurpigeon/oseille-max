@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     }) as WebhookEvent;
   } catch (err) {
     console.error(err);
-    return new Response("Webhook verification failed", { status: 400 });
+    return new Response("Webhook verification FAILED", { status: 400 });
   }
 
   if (evt.type === "organization.created") {
@@ -40,13 +40,15 @@ export async function POST(req: Request) {
     try {
       console.log("CREATE FARM", databaseName);
 
-      await turso.databases.create(databaseName, {
+      const response = await turso.databases.create(databaseName, {
         schema: process.env.TURSO_SCHEMA_DATABASE_NAME!,
         group: process.env.TURSO_GROUP_NAME!,
       });
+      console.log(response);
+      return new Response("Database creation SUCCESS", { status: 200 });
     } catch (err) {
       console.error(err);
-      return new Response("Database creation failed", { status: 500 });
+      return new Response("Database creation FAILED", { status: 500 });
     }
   }
 }
