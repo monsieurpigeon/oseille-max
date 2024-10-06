@@ -35,8 +35,8 @@ export function ItemList({
           <li key={item.id} className="relative">
             <Link
               className={cn(
-                "block border rounded hover:bg-primary/5 hover:shadow-inner active:bg-yellow-100 px-4 py-2 transition-all",
-                item.id === selected && "font-bold"
+                "block border rounded hover:bg-primary/5 active:shadow-inner active:bg-yellow-100 px-4 py-2 transition-all",
+                item.id === selected && "font-bold shadow-inner"
               )}
               href={{
                 pathname: href,
