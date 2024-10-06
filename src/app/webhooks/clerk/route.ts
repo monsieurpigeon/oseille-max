@@ -10,6 +10,13 @@ const turso = createClient({
 });
 
 export async function POST(req: Request) {
+  console.log(
+    process.env.TURSO_USER_API_TOKEN,
+    process.env.TURSO_ORG_NAME,
+    process.env.CLERK_WEBHOOK_SECRET,
+    process.env.TURSO_SCHEMA_DATABASE_NAME,
+    process.env.TURSO_GROUP_NAME
+  );
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
 
   const headerPayload = headers();
@@ -33,6 +40,8 @@ export async function POST(req: Request) {
     console.error(err);
     return new Response("Webhook verification FAILED", { status: 400 });
   }
+
+  console.log("EVENT", evt);
 
   if (evt.type === "organization.created") {
     const databaseName = md5(evt.data.id);
