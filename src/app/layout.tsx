@@ -1,3 +1,4 @@
+import Navigation from "@/components/navigation";
 import {
   ClerkProvider,
   OrganizationSwitcher,
@@ -8,6 +9,7 @@ import {
 } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -35,16 +37,28 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col`}
         >
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-            <OrganizationSwitcher />
-          </SignedIn>
-          {children}
+          <div className="flex justify-between items-center py-2 px-4 shadow">
+            <Link href="/">
+              <div>Oseille MAX</div>
+            </Link>
+            <div className="flex gap-4">
+              <SignedOut>
+                <SignInButton />
+              </SignedOut>
+              <SignedIn>
+                <OrganizationSwitcher />
+                <UserButton />
+              </SignedIn>
+            </div>
+          </div>
+          <div className="flex p-4 gap-4 grow justify-stretch">
+            <div>
+              <Navigation />
+            </div>
+            <div className="">{children}</div>
+          </div>
         </body>
       </html>
     </ClerkProvider>

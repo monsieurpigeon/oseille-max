@@ -1,6 +1,6 @@
 "use client";
 
-import { createProduct } from "@/actions/product";
+import { createCustomer } from "@/actions/customer";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -19,7 +19,7 @@ export const FormSchema = z.object({
   name: z.string().min(1),
 });
 
-export function ProductForm() {
+export function CustomerForm() {
   const router = useRouter();
 
   const form = useForm({
@@ -30,8 +30,8 @@ export function ProductForm() {
   });
 
   async function onSubmit(values: z.infer<typeof FormSchema>) {
-    await createProduct(values);
-    router.push("/products");
+    await createCustomer(values);
+    router.push("/customers");
   }
 
   return (
@@ -42,9 +42,9 @@ export function ProductForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Nom du produit</FormLabel>
+              <FormLabel>Nom du client</FormLabel>
               <FormControl>
-                <Input placeholder="Tomate" {...field} />
+                <Input placeholder="Biocoop" {...field} />
               </FormControl>
             </FormItem>
           )}

@@ -11,3 +11,13 @@ export const products = sqliteTable("products", {
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
 });
+
+export const customers = sqliteTable("customers", {
+  id: text("id", { length: 36 })
+    .primaryKey()
+    .$defaultFn(() => randomUUID()),
+  name: text("name", { length: 256 }).notNull(),
+  createdAt: text("created_at")
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+});

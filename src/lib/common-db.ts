@@ -8,7 +8,6 @@ import * as schema from "../db/schema";
 export async function getDatabaseClient() {
   const dbName = getDatabaseName();
   const orgName = process.env.TURSO_ORG_NAME!;
-  console.log(dbName);
   const client = createLibsqlClient({
     url: `libsql://${dbName}-${orgName}.turso.io`,
     authToken: process.env.TURSO_DATABASE_GROUP_AUTH_TOKEN || "",
