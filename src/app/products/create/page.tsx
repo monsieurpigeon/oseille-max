@@ -1,3 +1,10 @@
+import { ProductForm } from "./product-form";
+
 export default function Page() {
-  return <div>Créer un produit</div>;
+  return (
+    <div>
+      <div>Créer un produit</div>
+      <ProductForm />
+    </div>
+  );
 }

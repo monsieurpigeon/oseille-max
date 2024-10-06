@@ -1,16 +1,19 @@
 import { auth } from "@clerk/nextjs/server";
 import { createClient as createLibsqlClient } from "@libsql/client";
 import { createClient as createTursoClient } from "@tursodatabase/api";
+import { drizzle } from "drizzle-orm/libsql";
 import md5 from "md5";
+import * as schema from "../db/schema";
 
 export async function getDatabaseClient() {
   const dbName = getDatabaseName();
+  const orgName = process.env.TURSO_ORG_NAME!;
   console.log(dbName);
   const client = createLibsqlClient({
-    url: `libsql://${dbName}.turso.io`,
+    url: `libsql://${dbName}-${orgName}.turso.io`,
     authToken: process.env.TURSO_DATABASE_GROUP_AUTH_TOKEN || "",
   });
-  return client;
+  return drizzle(client, { schema });
 }
 
 const turso = createTursoClient({

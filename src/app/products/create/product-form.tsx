@@ -1,5 +1,7 @@
 "use client";
 
+import { createProduct } from "@/actions/product";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -26,6 +28,7 @@ export function ProductForm() {
 
   async function onSubmit(values: z.infer<typeof FormSchema>) {
     console.log(values);
+    await createProduct(values);
   }
 
   return (
@@ -43,6 +46,7 @@ export function ProductForm() {
             </FormItem>
           )}
         />
+        <Button type="submit">Créer</Button>
       </form>
     </Form>
   );
