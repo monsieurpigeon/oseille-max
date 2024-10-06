@@ -12,9 +12,9 @@ export default async function Page() {
       <Link href="/products/create">Créer un produit</Link>
       <pre>{JSON.stringify(products, null, 2)}</pre>
       <ul>
-        {products.map((product) => (
+        {/* {products.map((product) => (
           <li key={product.id}>{product.name}</li>
-        ))}
+        ))} */}
       </ul>
     </div>
   );
