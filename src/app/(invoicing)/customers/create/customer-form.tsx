@@ -35,22 +35,26 @@ export function CustomerForm() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nom du client</FormLabel>
-              <FormControl>
-                <Input placeholder="Biocoop" {...field} />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Créer</Button>
-      </form>
-    </Form>
+    <div className="p-4 border rounded">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <div className="flex flex-col justify-start items-start gap-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Nom du client</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Biocoop" {...field} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <Button type="submit">Ajouter</Button>
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 }

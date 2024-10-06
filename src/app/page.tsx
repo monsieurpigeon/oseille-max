@@ -1,14 +1,11 @@
 import { checkDatabaseExists } from "@/lib/common-db";
-import { auth, currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 
 export default async function Home() {
   const databaseExists = await checkDatabaseExists();
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Oseille Max
-      <pre>{JSON.stringify(auth(), null, 2)}</pre>
-      <pre>{JSON.stringify(currentUser(), null, 2)}</pre>
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      Oseille max
       {databaseExists ? (
         <div>Ma Ferme</div>
       ) : (
