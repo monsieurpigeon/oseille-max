@@ -39,7 +39,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col bg-gradient-to-t from-primary/10 to-background`}
         >
-          <div className=" shadow-lg pb-1 bg-gradient-to-r from-sky-300 via-white to-yellow-300">
+          <div className=" shadow-lg pb-1 bg-gradient-to-l from-sky-300  via-white via-85% to-90% to-yellow-300">
             <div className="bg-background flex justify-between items-center py-2 px-4">
               <Link href="/">
                 <div className="text-2xl flex items-center gap-1">
