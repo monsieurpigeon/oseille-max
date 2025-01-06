@@ -1,20 +1,68 @@
-import { useEffect, useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import Layout from "./components/layout";
+import CustomersPage from "./pages/customers";
+import CustomerForm from "./pages/customers/create";
+import DeliveriesPage from "./pages/deliveries";
+import DeliveryForm from "./pages/deliveries/create";
+import InvoicesPage from "./pages/invoices";
+import OrdersPage from "./pages/orders";
+import PricesPage from "./pages/prices";
+import ProductsPage from "./pages/products";
+import ProductForm from "./pages/products/create";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/products",
+        element: <ProductsPage />,
+        children: [
+          {
+            path: "create",
+            element: <ProductForm />,
+          },
+        ],
+      },
+      {
+        path: "/customers",
+        element: <CustomersPage />,
+        children: [
+          {
+            path: "create",
+            element: <CustomerForm />,
+          },
+        ],
+      },
+      {
+        path: "/prices",
+        element: <PricesPage />,
+      },
+      {
+        path: "/orders",
+        element: <OrdersPage />,
+      },
+      {
+        path: "/deliveries",
+        element: <DeliveriesPage />,
+        children: [
+          {
+            path: "create",
+            element: <DeliveryForm />,
+          },
+        ],
+      },
+      {
+        path: "/invoices",
+        element: <InvoicesPage />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetch(import.meta.env.VITE_REACT_APP_API_URL + "/api/hello")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  }, []);
-
-  return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">API Message:</h1>
-      <p>{message || "Loading..."}</p>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
