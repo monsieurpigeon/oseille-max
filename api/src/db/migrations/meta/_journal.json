@@ -71,6 +71,13 @@
       "when": 1729283298826,
       "tag": "0009_familiar_terror",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1736181189194,
+      "tag": "0010_nostalgic_daredevil",
+      "breakpoints": true
     }
   ]
 }

@@ -13,6 +13,7 @@ export const productTable = sqliteTable("product", {
 export const customerTable = sqliteTable("customer", {
   id: integer("id").primaryKey(),
   name: text("name").notNull(),
+  zip: text("zip"),
 });
 
 export const priceTable = sqliteTable(
