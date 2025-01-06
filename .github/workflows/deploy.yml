@@ -19,7 +19,7 @@ jobs:
       - name: Deploy API
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} '
-            cd /var/www/oseille-max-easy/api &&
+            cd /var/www/oseille-max/api &&
             git pull &&
             npm install &&
             npm run build &&
@@ -30,7 +30,7 @@ jobs:
           VITE_REACT_APP_API_URL: https://max.oseille.app
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} '
-            cd /var/www/oseille-max-easy/frontend &&
+            cd /var/www/oseille-max/frontend &&
             npm ci
             npm run build
             cp -r dist/* /var/www/html/'
