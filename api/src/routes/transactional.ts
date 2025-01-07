@@ -6,7 +6,7 @@ const transactionalRouter = Router();
 const resend = new Resend(process.env.RESEND_KEY);
 
 transactionalRouter.get(
-  "transactional/send",
+  "/transactional/send",
   async (req: Request, res: Response) => {
     const { data, error } = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",
