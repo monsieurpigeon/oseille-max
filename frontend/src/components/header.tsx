@@ -27,7 +27,12 @@ export default function Header() {
           <SignedIn>
             <Button
               onClick={() => {
-                fetch(`${import.meta.env.VITE_API_URL}/transactional/send`);
+                fetch(
+                  `${import.meta.env.VITE_API_URL}/transactional/send`
+                ).then((data) => {
+                  console.log(data);
+                  console.log("email sent");
+                });
               }}
             >
               Send

@@ -16,8 +16,11 @@ transactionalRouter.get(
     });
 
     if (error) {
+      console.log(error);
       return res.status(400).json({ error });
     }
+
+    console.log("email sent");
 
     res.status(200).json({ data });
   }
