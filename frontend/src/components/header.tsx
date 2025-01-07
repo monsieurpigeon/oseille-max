@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   OrganizationSwitcher,
   SignedIn,
@@ -24,6 +25,13 @@ export default function Header() {
             <SignInButton />
           </SignedOut>
           <SignedIn>
+            <Button
+              onClick={() => {
+                fetch(`${import.meta.env.VITE_API_URL}/transactional/send`);
+              }}
+            >
+              Send
+            </Button>
             <OrganizationSwitcher />
             <UserButton />
           </SignedIn>

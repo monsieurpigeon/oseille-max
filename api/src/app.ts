@@ -8,6 +8,7 @@ import invoicesRouter from "./routes/invoices";
 import ordersRouter from "./routes/orders";
 import pricesRouter from "./routes/prices";
 import productsRouter from "./routes/products";
+import transactionalRouter from "./routes/transactional";
 
 class App {
   public server;
@@ -32,6 +33,8 @@ class App {
     this.server.use("/api", ordersRouter);
     this.server.use("/api", deliveriesRouter);
     this.server.use("/api", invoicesRouter);
+    this.server.use("/api", transactionalRouter);
+
     this.server.use("/webhook", databaseRouter);
   }
 }
