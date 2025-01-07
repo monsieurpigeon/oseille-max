@@ -9,7 +9,7 @@ transactionalRouter.get(
   "/transactional/send",
   async (req: Request, res: Response) => {
     const { data, error } = await resend.emails.send({
-      from: "Oseille <hello@oseille.app>",
+      from: "Oseille <hello@transaction.oseille.app>",
       to: ["maxpige@gmail.com"],
       subject: "hello world",
       html: "<strong>it works!</strong>",
